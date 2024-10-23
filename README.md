@@ -4,7 +4,7 @@
 # Pasos para empezar a trabajar
 ## 1. Clonar el repositorio en el directorio o carpeta que desee
 
-![segunda img](/img_readme/sc.png)
+![segunda img](/img_readme/sc2.png)
 ```
 git clone https://github.com/StarFront/microproyectos_corredor.git
 ```
@@ -36,11 +36,14 @@ git push origin -Nombre integrante-             # Reemplaza con tu nombre
 ```
 
 
+## Utilizar la integración de VS Code con Github
+
+![tercera img](/img_readme/sc3.png)
 
 
 
 
 # Posible estructura ***FINAL*** de los directorios
 
-![segunda img](/img_readme/sc.png)
+![cuarta img](/img_readme/sc.png)
 

@@ -4,7 +4,7 @@
 # Pasos para empezar a trabajar
 ## 1. Clonar el repositorio en el directorio o carpeta que desee
 
-![segunda img](/sc2.png)
+![segunda img](/img_readme/sc.png)
 ```
 git clone https://github.com/StarFront/microproyectos_corredor.git
 ```
@@ -40,7 +40,7 @@ git push origin -Nombre integrante-             # Reemplaza con tu nombre
 
 
 
-# Posible estructura de los directorios
+# Posible estructura ***FINAL*** de los directorios
 
-![segunda img](/sc.png)
+![segunda img](/img_readme/sc.png)
 

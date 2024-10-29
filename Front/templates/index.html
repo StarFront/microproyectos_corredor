@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenWork</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
    
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
@@ -16,7 +16,7 @@
    
         <header>
             <div class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+                <img src="/static/img/logo.jpg" alt="GreenWork Logo">
             </div>
             <div class="nav-buttons">
                 <button class="btn" id="form-open">Iniciar sesión</button>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="image-container">
-                <img src="../img/pala.jpg" alt="GreenWork Image">
+                <img src="/static/img/pala.jpg" alt="GreenWork Image">
             </div>
         </section>
 
@@ -76,24 +76,24 @@
 
                 <!-- Signup form -->
                 <div class="form signup_form">
-                    <form action="#">
+                    <form action="/registrar_usuario" method="POST">
                     <h2>Registrarse</h2>
 
                     <div class="input_box">
-                        <input type="user_name" placeholder="Ingresa tu nombre de usuario" required />
+                        <input type="user_name" name="nombre_usuario" placeholder="Ingresa tu nombre de usuario" required />
                         <i class="uil uil-person-alt email"></i>
                     </div>
 
                     <div class="input_box">
-                        <input type="email" placeholder="Ingresa tu correo" required />
+                        <input type="email" name="correo" placeholder="Ingresa tu correo" required />
                         <i class="uil uil-envelope-alt email"></i>
                     </div>
 
                     <div class="input_box">
-                        <input type="password" placeholder="Ingresa tu contraseña" required />
+                        <input type="password" name="contraseña" placeholder="Ingresa tu contraseña" required />
                         <i class="uil uil-lock password"></i>
                         <i class="uil uil-eye-slash pw_hide"></i>
-                    </div>
+                    </div>  
 
                     <div class="input_box">
                         <input type="password" placeholder="Confirma tu contraseña" required />
@@ -101,7 +101,7 @@
                         <i class="uil uil-eye-slash pw_hide"></i>
                     </div>
 
-                    <button class="button">Registrarse</button>
+                    <button class="button" type="submit">Registrarse</button>
 
                     
                 </form>
@@ -113,6 +113,6 @@
 
 </div>
 
-<script src="../js/script.js"></script>
+<script src="/static/js/script.js"></script>
 </body>
 </html>

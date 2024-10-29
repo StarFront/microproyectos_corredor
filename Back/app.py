@@ -4,7 +4,8 @@ from mysql.connector import Error
 
 
 
-app = Flask(__name__, template_folder="../Front/templates")             #revisar esta vaina
+app = Flask(__name__, template_folder="../Front/templates", static_folder="../Front/")
+       
 
 def inicializar_bd():
     try:

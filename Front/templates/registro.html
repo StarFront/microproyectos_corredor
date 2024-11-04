@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de trabajo</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+     <div class="sidebar">
+        <div class="menu-toggle">
+            <span>&#9776;</span> <!-- Icono de menú tipo "hamburguesa" -->
+        </div>
+        <ul>
+            <li><img src="../img/icono-1.jpg" alt="Inicio" class="icono"> Inicio</li>
+            <li><img src="../img/icono-2.jpg" alt="Perfil" class="icono"> Perfil</li>
+            <li><img src="../img/icono-3.jpg" alt="Postulaciones" class="icono"> Postulaciones</li>
+            <li><img src="../img/icono-4.jpg" alt="Mis proyectos" class="icono"> Mis proyectos</li>
+            <li><img src="../img/icono-5.jpg" alt="Cerrar sesión" class="icono"> Cerrar sesión</li>
+        </ul>
+    </div>
+
+    <div class="form-container">
+        <h2>REGISTRO DE TRABAJO</h2>
+        <form>
+            
+            <label for="titulo">Título *</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" rows="3"></textarea>
+
+            <label for="duracion">Duración *</label>
+            <input type="text" id="duracion" name="duracion" required>
+
+            <label for="ubicacion">Ubicación</label>
+            <input type="text" id="ubicacion" name="ubicacion" placeholder="Ej: Calle 12A">
+
+            <label for="pago">Pago</label>
+            <select id="pago" name="pago">
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option value="hora">Por Hora</option>
+                <option value="tarea">Por Tarea</option>
+            </select>
+
+            <label for="monto">Monto</label>
+            <input type="text" id="monto" name="monto">
+
+            <!-- Botón de registro -->
+            <button type="submit">Registrar trabajo</button>
+        </form>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+</html>

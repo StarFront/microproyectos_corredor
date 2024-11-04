@@ -39,4 +39,29 @@ pwShowHide.forEach((icon) => {
     });
 });
 
+// Formulario de Registro
+document.addEventListener("DOMContentLoaded", () => {
+    const formContainer = document.querySelector(".form-container");
+    formContainer.style.opacity = "0";
+    formContainer.style.transform = "translateY(20px)";
+    
+    setTimeout(() => {
+        formContainer.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        formContainer.style.opacity = "1";
+        formContainer.style.transform = "translateY(0)";
+    }, 100);
+});
 
+
+// Menú desplegable
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+    const sidebar = document.querySelector(".sidebar");
+    sidebar.classList.toggle("collapsed");
+
+    const formContainer = document.querySelector(".form-container");
+    if (sidebar.classList.contains("collapsed")) {
+        formContainer.style.marginLeft = "60px"; // Ajusta margen cuando el menú está colapsado
+    } else {
+        formContainer.style.marginLeft = "220px"; // Ajusta margen cuando el menú está expandido
+    }
+});

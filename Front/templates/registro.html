@@ -4,22 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de trabajo</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/registro.css">
 </head>
 <body>
 
-     <div class="sidebar">
-        <div class="menu-toggle">
-            <span>&#9776;</span> <!-- Icono de menú tipo "hamburguesa" -->
-        </div>
-        <ul>
-            <li><img src="../img/icono-1.jpg" alt="Inicio" class="icono"> Inicio</li>
-            <li><img src="../img/icono-2.jpg" alt="Perfil" class="icono"> Perfil</li>
-            <li><img src="../img/icono-3.jpg" alt="Postulaciones" class="icono"> Postulaciones</li>
-            <li><img src="../img/icono-4.jpg" alt="Mis proyectos" class="icono"> Mis proyectos</li>
-            <li><img src="../img/icono-5.jpg" alt="Cerrar sesión" class="icono"> Cerrar sesión</li>
-        </ul>
-    </div>
+    <div id="menu-container"></div> <!-- es para conectar el menu mediante el script -->
 
     <div class="form-container">
         <h2>REGISTRO DE TRABAJO</h2>
@@ -51,6 +40,6 @@
             <button type="submit">Registrar trabajo</button>
         </form>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="../js/menu.js"></script> <!-- el script del menu, quite el que estaba anteriormente por que no funcionaba -->
 </body>
 </html>

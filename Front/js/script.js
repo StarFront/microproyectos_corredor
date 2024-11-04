@@ -26,9 +26,12 @@ signupOpenBtn.addEventListener("click", () => {
 formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
 
 // Mostrar/Ocultar contraseña
+
 pwShowHide.forEach((icon) => {
     icon.addEventListener("click", () => {
-        let passwordField = icon.previousElementSibling;
+        // Selecciona el campo de contraseña que está en el mismo contenedor
+        let passwordField = icon.parentElement.querySelector("input[type='password'], input[type='text']");
+
         if (passwordField.type === "password") {
             passwordField.type = "text";
             icon.classList.replace("uil-eye-slash", "uil-eye");
@@ -38,6 +41,7 @@ pwShowHide.forEach((icon) => {
         }
     });
 });
+
 
 // Formulario de Registro
 document.addEventListener("DOMContentLoaded", () => {

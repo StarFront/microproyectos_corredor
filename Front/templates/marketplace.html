@@ -8,6 +8,16 @@
 </head>
 <body>
 
+    <div id="menu-placeholder"></div>
+  <script>
+    fetch('menu.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('menu-placeholder').innerHTML = data;
+      })
+      .catch(error => console.error('Error al cargar el menú:', error));
+  </script>
+
     <div class="container"> 
    
         <header>
@@ -22,16 +32,19 @@
             <div class="show-box" id="show-box">
                 <div class="line">
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 1</p>
                         <span class="price" id="price">$ 200.0000</span>
                         <p class="location" id="location">calle 3b</p>
                     </div>
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 2</p>
                         <span class="price" id="price">$ 250.0000</span>
                         <p class="location" id="location">calle 4b</p>
                     </div>
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 3</p>
                         <span class="price" id="price">$ 300.0000</span>
                         <p class="location" id="location">calle 5b</p>
@@ -41,16 +54,19 @@
 
                 <div class="line">
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 1</p>
                         <span class="price" id="price">$ 200.0000</span>
                         <p class="location" id="location">calle 3b</p>
                     </div>
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 2</p>
                         <span class="price" id="price">$ 250.0000</span>
                         <p class="location" id="location">calle 4b</p>
                     </div>
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 3</p>
                         <span class="price" id="price">$ 300.0000</span>
                         <p class="location" id="location">calle 5b</p>
@@ -60,16 +76,19 @@
 
                 <div class="line">
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 1</p>
                         <span class="price" id="price">$ 200.0000</span>
                         <p class="location" id="location">calle 3b</p>
                     </div>
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 2</p>
                         <span class="price" id="price">$ 250.0000</span>
                         <p class="location" id="location">calle 4b</p>
                     </div>
                     <div class="item">
+                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
                         <p class="description" id="description">ejemplo 3</p>
                         <span class="price" id="price">$ 300.0000</span>
                         <p class="location" id="location">calle 5b</p>
@@ -78,7 +97,27 @@
                 
 
             </div>
+
+            <!-- item seleccionado 
+
+           
+<div id="full-screen-product" class="full-screen" style="display: none;">
+    <div class="close" id="full-screen-close">✖</div>
+    <div class="info">
+        <img src="" alt="Imagen del producto" id="full-screen-img">
+        <h2 id="full-screen-title">Título del producto</h2>
+        <p id="full-screen-description">Descripción</p>
+        <span class="price" id="full-screen-price">Precio</span>
+    </div>
+</div> -->
+
+
+
         </section>
+        
+
+        
+        
         
 
         

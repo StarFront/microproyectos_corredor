@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex-direction: row-reverse;
+}
+
+.text-content h1 {
+    text-align: left;
+    margin: 0;
+    padding-left: 100px;
+
+
+}
+
+.logo img {
+    max-width: 120px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+.content {
+    max-width: 1100px;
+    width: 100%;
+    margin: 40px auto;
+    display: flex;
+}
+
+.show-box {
+    width: 100%;
+    transition: .5s ease;
+}
+
+.show-box .line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.show-box .line .item {
+    max-width: 210px;
+    padding: 30px;
+    height: 250px;
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .3s;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.show-box .line .item:hover {
+    background-color: aqua;
+}
+
+.show-box .line .item .description {
+    color: blue;
+}
+
+.show-box .line .item .price {
+    color: aqua;
+}
+
+.show-box .line .item .location {
+    color: brown;
+}
+
+

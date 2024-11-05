@@ -14,13 +14,13 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgb(163, 15, 40);
+    background-color: #8B4513;
     transition: 0.5s ease;
     transform: translateX(-180px);
 }
 
 h1 {
-    color: blue;
+    color: #2e1501 ;
     font-weight: 800;
     text-align: right;
     padding: 10px 0;
@@ -33,7 +33,7 @@ ul li{
 }
 
 ul li a {
-    color: violet;
+    color: #2e1501;
     font-weight: 500;
     padding: 5px 0;
     display: block;
@@ -45,6 +45,7 @@ ul li a {
 ul li a i {
     width: 40px;
     text-align: center;
+    color: #043004;
 }
 
 input {
@@ -62,7 +63,6 @@ input {
     left: 15px;
     cursor: pointer;
     border-radius: 2px;
-    background-color: aqua;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -70,7 +70,7 @@ input {
     position: absolute;
     height: 2px;
     width: 20px;
-    background-color: blueviolet;
+    background-color:#043004 ;
     border-radius: 50px;
     transition: 0.3s ease;
 }

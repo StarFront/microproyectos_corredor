@@ -11,7 +11,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(90deg, #ac754e, #ecd7d283); /* Fondo con degradado */
+    background: linear-gradient(90deg, #ac754e, #9e6051); /* Fondo con degradado */
 }
 
 .form-container {
@@ -27,14 +27,14 @@ body {
 .form-container h2 {
     text-align: center;
     font-size: 24px;
-    color: #8B4513; /* Color café */
+    color: #006400;
     margin-bottom: 20px;
 }
 
 .form-container label {
     display: block;
     margin: 10px 0 5px;
-    color: #333;
+    color: #006400;
     font-weight: bold;
     font-size: 14px;
 }
@@ -67,7 +67,7 @@ body {
 button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #8B4513;
+    background-color: #006400;
     border: none;
     border-radius: 10px;
     color: #fff;

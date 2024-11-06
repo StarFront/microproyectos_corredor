@@ -55,3 +55,4 @@ document.querySelector(".menu-toggle").addEventListener("click", () => {
         formContainer.style.marginLeft = "220px"; // Ajusta margen cuando el menú está expandido
     }
 });
+

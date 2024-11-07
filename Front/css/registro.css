@@ -23,7 +23,8 @@ header {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+   
+    border-bottom: 2px solid #8B4513;
 }
 
 .logo {
@@ -33,6 +34,12 @@ header {
 .logo img {
     max-width: 120px;
     width: 100px;
+}
+
+.text-content h1 {
+    text-align: left;
+    margin: 0;
+    color: #4e2504;
 }
 
 .form-container {

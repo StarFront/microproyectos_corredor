@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash board</title>
+</head>
+<body>
+
+    <div id="menu-placeholder"></div>
+    <script>
+      fetch('menu.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('menu-placeholder').innerHTML = data;
+        })
+        .catch(error => console.error('Error al cargar el menú:', error));
+    </script>
+
+<header>
+    <a href="../templates/index.html" class="logo">
+        <img src="../img/logo.jpg" alt="GreenWork Logo">
+    </a>
+  </header>
+    
+  <div class="button-container">
+    <a href="pagina1.html" class="button">Página 1</a>
+    <a href="pagina2.html" class="button">Página 2</a>
+</div>
+
+</body>
+</html>

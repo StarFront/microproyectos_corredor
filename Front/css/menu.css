@@ -49,11 +49,13 @@ ul li a i {
     color: #245501;
 }
 
-input {
+.input-menu {
     display: none;
     visibility: hidden;
     -webkit-appearance: none;
 }
+
+
 
 .toggle {
     position: absolute;

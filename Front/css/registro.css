@@ -6,12 +6,33 @@
 
 body {
     font-family: Arial, sans-serif;
+    padding-top: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     
+}
+
+header {
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    margin-right: 20px;
+}
+
+.logo img {
+    max-width: 120px;
+    width: 100px;
 }
 
 .form-container {

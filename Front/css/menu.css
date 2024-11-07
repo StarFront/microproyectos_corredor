@@ -14,13 +14,13 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #8B4513;
+    background-color: #8b5e34;
     transition: 0.5s ease;
     transform: translateX(-180px);
 }
 
 h1 {
-    color: #2e1501 ;
+    color: #ffffff ;
     font-weight: 800;
     text-align: right;
     padding: 10px 0;
@@ -33,9 +33,10 @@ ul li{
 }
 
 ul li a {
-    color: #2e1501;
-    font-weight: 500;
+    color: #ffffff;
+    font-weight: 700;
     padding: 5px 0;
+    margin-bottom: 10px;
     display: block;
     text-transform: capitalize;
     text-decoration: none;
@@ -45,7 +46,7 @@ ul li a {
 ul li a i {
     width: 40px;
     text-align: center;
-    color: #043004;
+    color: #245501;
 }
 
 input {
@@ -70,7 +71,7 @@ input {
     position: absolute;
     height: 2px;
     width: 20px;
-    background-color:#043004 ;
+    background-color:#245501;
     border-radius: 50px;
     transition: 0.3s ease;
 }

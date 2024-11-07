@@ -79,7 +79,7 @@ header {
 }
 
 .show-box .line .item:hover {
-    background-color: #5e280177
+    background-color: #FFEDD8;
 }
 
 .show-box .line .item .description {

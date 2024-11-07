@@ -11,7 +11,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background: linear-gradient(90deg, #ac754e, #9e6051); /* Fondo con degradado */
+    
 }
 
 .form-container {
@@ -22,19 +22,20 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    background-color: #006400;
 }
 
 .form-container h2 {
     text-align: center;
     font-size: 24px;
-    color: #006400;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
 .form-container label {
     display: block;
     margin: 10px 0 5px;
-    color: #006400;
+    color: #FFFFFF;
     font-weight: bold;
     font-size: 14px;
 }
@@ -67,7 +68,7 @@ body {
 button[type="submit"] {
     width: 100%;
     padding: 12px;
-    background-color: #006400;
+    background-color: #143601;
     border: none;
     border-radius: 10px;
     color: #fff;

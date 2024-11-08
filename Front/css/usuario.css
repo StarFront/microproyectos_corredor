@@ -129,20 +129,3 @@ button[type="submit"]:hover {
 
 
 
-button[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background-color: #143601;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-}
-
-button[type="submit"]:hover {
-    background-color: #a55a3a;
-}

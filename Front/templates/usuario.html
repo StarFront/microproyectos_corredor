@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Usuario</title>
+    <link rel="stylesheet" href="../css/usuario.css">
+</head>
+<body>
+    <div id="menu-placeholder"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('menu-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Error al cargar el menú:', error));
+    </script>
+
+    <header>
+        <a href="../templates/index.html" class="logo">
+            <img src="../img/logo.jpg" alt="GreenWork Logo">
+        </a>
+    </header>
+
+    <div class="form-container">
+        <h2>Formulario de usuario</h2>
+        <form>
+            <label for="nombres">Nombres</label>
+            <input type="text" id="nombres" name="nombres">
+
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos">
+
+            <label for="cedula">Cédula</label>
+            <input type="text" id="cedula" name="cedula">
+
+            <label for="telefono">Número telefónico</label>
+            <input type="text" id="telefono" name="telefono">
+
+            <label for="nacimiento">Fecha de nacimiento</label>
+            <input type="date" id="nacimiento" name="nacimiento">
+
+            <label for="foto-perfil">Foto de perfil</label>
+            <div class="upload-container">
+                <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
+                <div class="upload-area">
+                    <span>Upload a File</span>
+                    <p>Drag and drop files here</p>
+                </div>
+            </div>
+
+            <button type="submit">Actualizar usuario</button>
+        </form>
+    </div>
+    
+</body>
+</html>
+
+

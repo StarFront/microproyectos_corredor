@@ -104,4 +104,46 @@ button[type="submit"]:hover {
     background-color: #a55a3a;
 }
 
+.upload-container {
+    position: relative;
+    width: 100%;
+    border: 2px dashed #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
 
+.upload-container:hover {
+    border-color: #66cc66;
+    background-color: #eef9ee;
+}
+
+.upload-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Oculta el input real */
+    cursor: pointer;
+}
+
+.upload-area {
+    color: #666;
+    font-size: 16px;
+}
+
+.upload-area span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.upload-area p {
+    margin: 0;
+    font-size: 14px;
+}

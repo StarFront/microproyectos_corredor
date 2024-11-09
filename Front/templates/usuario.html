@@ -7,21 +7,29 @@
     <link rel="stylesheet" href="../css/usuario.css">
 </head>
 <body>
-    <div id="menu-placeholder"></div>
-    <script>
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('menu-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error al cargar el menú:', error));
-    </script>
 
-    <header>
-        <a href="../templates/index.html" class="logo">
-            <img src="../img/logo.jpg" alt="GreenWork Logo">
-        </a>
-    </header>
+    <div class="container"> 
+   
+        <header>
+            <a href="../templates/index.html" class="logo">
+                <img src="../img/logo.jpg" alt="GreenWork Logo">
+            </a>
+            <div class="text-content">
+    
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
+                    <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-key"></i> Cerrar sesion</a></li>
+                </ul>
+            </nav>
+            </div>
+        </header>
 
     <div class="form-container">
         <h2>Formulario de usuario</h2>

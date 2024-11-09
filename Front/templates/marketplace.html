@@ -1,4 +1,4 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,15 +8,7 @@
 </head>
 <body>
 
-    <div id="menu-placeholder"></div>
-  <script>
-    fetch('menu.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('menu-placeholder').innerHTML = data;
-      })
-      .catch(error => console.error('Error al cargar el menú:', error));
-  </script>
+
 
     <div class="container"> 
    
@@ -25,7 +17,19 @@
                 <img src="../img/logo.jpg" alt="GreenWork Logo">
             </a>
             <div class="text-content">
-                <h1>Marketplace</h1>
+    
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
+                    <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-key"></i> Cerrar sesion</a></li>
+                </ul>
+            </nav>
             </div>
         </header>
         
@@ -99,30 +103,7 @@
                 
 
             </div>
-
-            <!-- item seleccionado 
-
-           
-<div id="full-screen-product" class="full-screen" style="display: none;">
-    <div class="close" id="full-screen-close">✖</div>
-    <div class="info">
-        <img src="" alt="Imagen del producto" id="full-screen-img">
-        <h2 id="full-screen-title">Título del producto</h2>
-        <p id="full-screen-description">Descripción</p>
-        <span class="price" id="full-screen-price">Precio</span>
-    </div>
-</div> -->
-
-
-
-        </section>
-        
-
-        
-        
-        
-
-        
+        </section>  
     
 </body>
 </html>

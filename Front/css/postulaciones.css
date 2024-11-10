@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row-reverse;
+    border-bottom: 2px solid #8B4513;
+}
+
+header ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0.5em auto;
+    text-align: center;
+}
+
+header ul li{
+    display: inline;
+}
+
+header ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    padding: 5px 15px; /* Tamaño de la "cajita" */
+    color: #333; /* Color del texto */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s, border-radius 0.3s; /* Efecto de transición */
+  }
+
+header nav ul li a:hover {
+    background-color: #8B4513; /* Color de fondo de la cajita al hacer hover */
+    color: #fff;
+    border-radius: 8px;
+}
+
+.logo img {
+    max-width: 120px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+.postulaciones-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.columna {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.columna-header {
+    background-color: #a55a3a;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.tarjeta {
+    margin-top: 15px;
+    background-color: #006400;
+    border-radius: 10px;
+    padding: 15px;
+    color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.tarjeta:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.tarjeta h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.tarjeta p {
+    font-size: 14px;
+}

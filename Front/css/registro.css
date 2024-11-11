@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -37,6 +38,7 @@ header ul li a{
     text-decoration: none;
     color: black;
     font-size: 1.1em;
+    
 }
 
 nav ul li {

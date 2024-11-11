@@ -19,7 +19,7 @@ header {
     align-items: center;
     padding: 20px;
     flex-direction: row-reverse;
-    
+    border-bottom: 2px solid #8B4513;
 }
 
 header ul {
@@ -63,52 +63,66 @@ header nav ul li a:hover {
     margin-right: 10px;
 }
 
-/* Estilos básicos del dashboard */
-
-
-.dashboard-container {
-    width: 90%;
-    max-width: 800px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+.container-table {
+    max-width: 600px;
     margin: 0 auto;
-
-}
-
-h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.columns {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.column {
-    width: 48%; /* Ancho de cada columna para que estén lado a lado */
-}
-
-.job-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-
-}
-
-.job-item {
-    background-color: #006400;
-    color: #fff;
+    padding: 20px;
+  }
+  table {
+    width: 100%;
+    border: 20px solid #8B4513;
+    border-collapse: collapse;
+    border-radius: 10px; /* Borde redondeado */
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  th, td {
     padding: 10px;
-    border-radius: 5px;
+    text-align: left;
+    border: 1px solid #ddd;
+    
+  }
+
+  tr td, tr th {
+    border-bottom: 1px solid #ddd; /* Línea horizontal entre las filas */
+}
+
+  th{
+    background-color: #8b4513;
+    padding: 20px 10px;
     text-align: center;
-    font-size: 18px;
+    color: #ffffff;
+  }
+
+  td{
+    padding: 30px 10px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  
+
+  tr:hover td {
+    background-color: #289b28;
+    color: #fff;
+}
+
+
+   /* Estilo para la disponibilidad */
+   .disponible, .no-disponible {
+    color: #8B4513;
+  }
+
+  table td a {
+    color: #4b2103; /* Color marrón */
+    text-decoration: none; /* Quitar subrayado */
+  }
+
+  table td a:visited {
+    color: #fff; /* Mantener el mismo color al visitar el enlace */
+}
+
+table td a:hover {
+    color: #fff; /* Mantener color blanco al pasar el cursor */
 }
 
 .boton {
@@ -119,6 +133,8 @@ h1 {
     border-radius: 5px;
     transition: background-color 0.3s;
     margin: 0 80px;
+    font-size: 1.1em;
+    border: none;
 }
 
 .boton:hover {
@@ -130,5 +146,3 @@ h1 {
     margin: 20px 0;
     text-align: center; /* Centra el botón */
 }
-
-

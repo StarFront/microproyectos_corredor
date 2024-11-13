@@ -145,5 +145,10 @@ header nav ul li a:hover {
     color: grey;
 }
 
- 
+.item {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+}
 

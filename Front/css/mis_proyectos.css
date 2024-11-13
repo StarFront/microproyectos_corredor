@@ -139,14 +139,15 @@ header nav ul li a:hover {
   table td a {
     color: #4b2103; /* Color marrón */
     text-decoration: none; /* Quitar subrayado */
+    transition: color 0.3s;
   }
 
   table td a:visited {
-    color: #fff; /* Mantener el mismo color al visitar el enlace */
+    color: #4b2103; /* Mantener el mismo color al visitar el enlace */
 }
 
 table td a:hover {
-    color: #fff; /* Mantener color blanco al pasar el cursor */
+    color: #ffffff; /* Mantener color blanco al pasar el cursor */
 }
 
 .boton {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Usuario</title>
+    <title>Perfil</title>
     <link rel="stylesheet" href="../css/usuario.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -34,36 +34,28 @@
             </nav>
         </header>
 
-        <div class="form-container">
-            <h2>Formulario de usuario</h2>
-            <form action="{{ url_for('actualizar_perfil_view') }}" method="POST" enctype="multipart/form-data">
-                <label for="nombres">Nombres</label>
-                <input type="text" id="nombres" name="nombres" required>
+        <div class="job-card">
 
-                <label for="apellidos">Apellidos</label>
-                <input type="text" id="apellidos" name="apellidos" required>
+            <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
 
-                <label for="cedula">Cédula</label>
-                <input type="text" id="cedula" name="cedula" required>
+            <h3 class="section-title">Nombre</h3>
+            <p class="Nombre" id="Nombre">Alvaro Jose Gordillo</p>
+            
+            <h3 class="section-title">Cedula</h3>
+            <p class="cedula" id="cedula">41256458</p>
+            
+            <h3 class="section-title">Numero telefonico</h3>
+            <p class="telefono" id="telefono">311584458</p>
+            
+            <h3 class="section-title">Fecha de nacimiento</h3>
+            <p class="fecha" id="fecha">20/02/2006</p>
+            
+            <a href="../templates/visgeneral.html" class="apply-button">Actualizar perfil</a>
+          
 
-                <label for="telefono">Número telefónico</label>
-                <input type="text" id="telefono" name="telefono" required>
-
-                <label for="nacimiento">Fecha de nacimiento</label>
-                <input type="date" id="nacimiento" name="nacimiento" required>
-
-                <label for="foto-perfil">Foto de perfil</label>
-                <div class="upload-container">
-                    <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
-                    <div class="upload-area">
-                        <span>Subir archivo</span>
-                        <p>Arrastra y suelta archivos aquí</p>
-                    </div>
-                </div>
-
-                <button type="submit">Actualizar usuario</button>
-            </form>
+            
         </div>
     </div>
+    
 </body>
 </html>

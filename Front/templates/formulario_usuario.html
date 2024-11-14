@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de usuario</title>
+    <link rel="stylesheet" href="../css/formulario_usuario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container"> 
+   
+        <header>
+            <a href="../templates/index.html" class="logo">
+                <img src="../img/logo.jpg" alt="GreenWork Logo">
+            </a>
+            <div class="text-content">
+    
+            </div>
+
+            <nav class="navbar">
+                <ul>
+                    <!-- <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
+                    <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
+                    <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
+                    <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-key"></i> Cerrar sesion</a></li> -->
+                    
+                    <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
+                    <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
+                    <li><a href="{{ url_for('postulaciones') }}"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
+                    <li><a href="{{ url_for('mis_proyectos') }}"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
+                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+     </div>
+        </header>
+
+
+        
+        <div class="form-container">
+            <h2>Formulario de usuario</h2>
+            <form action="{{ url_for('actualizar_perfil_view') }}" method="POST" enctype="multipart/form-data">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" name="nombres" required>
+
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+
+                <label for="cedula">Cédula</label>
+                <input type="text" id="cedula" name="cedula" required>
+
+                <label for="telefono">Número telefónico</label>
+                <input type="text" id="telefono" name="telefono" required>
+
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input type="date" id="nacimiento" name="nacimiento" required>
+
+                <label for="foto-perfil">Foto de perfil</label>
+                <div class="upload-container">
+                    <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
+                    <div class="upload-area">
+                        <span>Subir archivo</span>
+                        <p>Arrastra y suelta archivos aquí</p>
+                    </div>
+                </div>
+
+                <button type="submit">Actualizar usuario</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+    <!-- <h1>Perfil de Usuario</h1>
+
+    {% if perfil %}
+        <p><strong>Nombre:</strong> {{ perfil[2] }} {{ perfil[3] }}</p>
+        <p><strong>Cédula:</strong> {{ perfil[4] }}</p>
+        <p><strong>Teléfono:</strong> {{ perfil[5] }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ perfil[6] }}</p>
+        
+        {% if perfil[7] %}
+            <img src="{{ url_for('static', filename='img/img_perfil/' + perfil[7]) }}" alt="Foto de perfil" />
+        {% else %}
+            <p>No hay foto de perfil.</p>
+        {% endif %}
+    {% else %}
+        <p>No se ha encontrado perfil para este usuario.</p>
+    {% endif %}
+     -->

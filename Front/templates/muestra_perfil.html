@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<body>
+    <h1>Perfil de Usuario</h1>
+
+    {% if perfil %}
+        <p><strong>Nombre:</strong> {{ perfil[2] }} {{ perfil[3] }}</p>
+        <p><strong>Cédula:</strong> {{ perfil[4] }}</p>
+        <p><strong>Teléfono:</strong> {{ perfil[5] }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ perfil[6] }}</p>
+        
+        {% if perfil[7] %}
+            <img src="{{ url_for('static', filename='img/img_perfil/' + perfil[7]) }}" alt="Foto de perfil" />
+        {% else %}
+            <p>No hay foto de perfil.</p>
+        {% endif %}
+    {% else %}
+        <p>No se ha encontrado perfil para este usuario.</p>
+    {% endif %}
+    
+</body>
+</html>

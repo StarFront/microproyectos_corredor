@@ -20,12 +20,19 @@
 
             <nav class="navbar">
                 <ul>
-                    <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <!-- <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
                     <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
                     <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
                     <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
                     <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <li><a href="#"> <i class="fa-solid fa-key"></i> Cerrar sesion</a></li>
+                    <li><a href="#"> <i class="fa-solid fa-key"></i> Cerrar sesion</a></li> -->
+                    
+                    <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
+                    <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
+                    <li><a href="{{ url_for('postulaciones') }}"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
+                    <li><a href="{{ url_for('mis_proyectos') }}"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
+                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li>
                 </ul>
             </nav>
      </div>

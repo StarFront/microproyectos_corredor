@@ -7,19 +7,12 @@
     <link rel="stylesheet" href="../css/usuario.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-</head>
 <body>
-
-    <div class="container"> 
-   
+    <div class="container">
         <header>
-            <a href="../templates/index.html" class="logo">
+            <a href="{{ url_for('index') }}" class="logo">
                 <img src="../img/logo.jpg" alt="GreenWork Logo">
             </a>
-            <div class="text-content">
-    
-            </div>
-
             <nav class="navbar">
                 <ul>
                     <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
@@ -28,43 +21,49 @@
                     <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
                     <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
                     <button id="logoutButton" class="logout-button">Cerrar sesión</button>
+
+                    <!-- <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
+                    <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
+                    <li><a href="{{ url_for('postulaciones') }}"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
+                    <li><a href="{{ url_for('mis_proyectos') }}"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
+                    <li><a href="{{ url_for('muestra_perfil') }}"> <i class="fa-solid fa-briefcase"></i> Muestra perfil</a></li> 
+                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li> -->
+                    
                 </ul>
             </nav>
-            </div>
         </header>
 
-    <div class="form-container">
-        <h2>Formulario de usuario</h2>
-        <form>
-            <label for="nombres">Nombres</label>
-            <input type="text" id="nombres" name="nombres">
+        <div class="form-container">
+            <h2>Formulario de usuario</h2>
+            <form action="{{ url_for('actualizar_perfil_view') }}" method="POST" enctype="multipart/form-data">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" name="nombres" required>
 
-            <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" name="apellidos">
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos" required>
 
-            <label for="cedula">Cédula</label>
-            <input type="text" id="cedula" name="cedula">
+                <label for="cedula">Cédula</label>
+                <input type="text" id="cedula" name="cedula" required>
 
-            <label for="telefono">Número telefónico</label>
-            <input type="text" id="telefono" name="telefono">
+                <label for="telefono">Número telefónico</label>
+                <input type="text" id="telefono" name="telefono" required>
 
-            <label for="nacimiento">Fecha de nacimiento</label>
-            <input type="date" id="nacimiento" name="nacimiento">
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input type="date" id="nacimiento" name="nacimiento" required>
 
-            <label for="foto-perfil">Foto de perfil</label>
-            <div class="upload-container">
-                <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
-                <div class="upload-area">
-                    <span>Upload a File</span>
-                    <p>Drag and drop files here</p>
+                <label for="foto-perfil">Foto de perfil</label>
+                <div class="upload-container">
+                    <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
+                    <div class="upload-area">
+                        <span>Subir archivo</span>
+                        <p>Arrastra y suelta archivos aquí</p>
+                    </div>
                 </div>
-            </div>
 
-            <button type="submit">Actualizar usuario</button>
-        </form>
+                <button type="submit">Actualizar usuario</button>
+            </form>
+        </div>
     </div>
-    
 </body>
 </html>
-
-

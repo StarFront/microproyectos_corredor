@@ -49,16 +49,16 @@
         <i class="uil uil-times form_close"></i>
         <!-- login form -->
         <div class="form login_form">
-            <form action="#">
+            <form action="/login" method="POST">
             <h2>Iniciar sesion</h2>
 
             <div class="input_box">
-                <input type="email" placeholder="Ingresa tu correo" required />
+                <input type="email" name="correo" placeholder="Ingresa tu correo" required />
                 <i class="uil uil-envelope-alt email"></i>
             </div>
 
             <div class="input_box">
-                <input type="password" placeholder="Ingresa tu contraseña" required />
+                <input type="password" name="contraseña" placeholder="Ingresa tu contraseña" required />
                 <i class="uil uil-lock password"></i>
                 <i class="uil uil-eye-slash pw_hide"></i>
             </div>

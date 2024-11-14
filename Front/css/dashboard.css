@@ -63,6 +63,32 @@ header nav ul li a:hover {
     margin-right: 10px;
 }
 
+/* Estilos para el botón de cerrar sesión */
+.logout-button {
+    background-color: #FFFFFF;
+    color: #333; /* Color de texto gris */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 1.1em; /* Tamaño de la fuente */
+    border: none; /* Sin bordes */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave en el color de fondo */
+}
+
+/* Efecto hover para el botón */
+.logout-button:hover {
+    background-color: #8B4513; /* Color de fondo de la cajita al hacer hover */
+    color: #fff;
+    border-radius: 8px;
+}
+
+/* Efecto al hacer clic en el botón */
+.logout-button:active {
+    background-color: #72380e; /* Color de fondo aún más oscuro al hacer clic */
+    transform: scale(0.98); /* Efecto de presión al hacer clic */
+}
+
+
 /* Estilos básicos del dashboard */
 
 

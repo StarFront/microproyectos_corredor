@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row-reverse;
+    border-bottom: 2px solid #8B4513;
+}
+
+header ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0.5em auto;
+    text-align: center;
+}
+
+header ul li{
+    display: inline;
+}
+
+header ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    padding: 5px 15px; /* Tamaño de la "cajita" */
+    color: #333; /* Color del texto */
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s, border-radius 0.3s; /* Efecto de transición */
+  }
+
+header nav ul li a:hover {
+    background-color: #8B4513; /* Color de fondo de la cajita al hacer hover */
+    color: #fff;
+    border-radius: 8px;
+}
+
+.logo img {
+    max-width: 120px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+
+.logo img {
+    max-width: 100px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Estilo de la tarjeta de trabajo */
+.job-card {
+    background-color: #f5f5f5;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #333;
+}
+
+.job-card img.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #ddd;
+    object-fit: cover;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+    margin-top: 15px;
+}
+
+.job-card p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Botón de postulación */
+.apply-button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #81524c;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #673d3a;
+}

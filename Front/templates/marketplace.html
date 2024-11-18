@@ -4,114 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketplace</title>
-    <link rel="stylesheet" href="../css/marketplace.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketplace.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-
-
     <div class="container"> 
-   
         <header>
-            <a href="../templates/index.html" class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+            <a href="{{ url_for('dashboard') }}" class="logo">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
             </a>
-            <div class="text-content">
-    
-            </div>
-
             <nav class="navbar">
                 <ul>
-                    <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
-                    <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
-                    <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
-                    <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
-                    <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <button id="logoutButton" class="logout-button">Cerrar sesión</button>
-
-                    <!-- <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
-                    <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
-                    <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
-                    <li><a href="{{ url_for('postulaciones') }}"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
-                    <li><a href="{{ url_for('mis_proyectos') }}"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li> -->
+                    <li><a href="{{ url_for('dashboard') }}">Inicio</a></li>
+                    <li><a href="{{ url_for('perfil') }}">Perfil</a></li>
+                    <li><a href="{{ url_for('marketplace') }}">Marketplace</a></li>
+                    <li><a href="{{ url_for('postulaciones') }}">Postulaciones</a></li>
+                    <li><a href="{{ url_for('mis_proyectos') }}">Mis proyectos</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="logout-button">Cerrar sesión</a></li>
                 </ul>
             </nav>
-     </div>
         </header>
-        
 
         <section class="content">
             <div class="show-box" id="show-box">
                 <div class="line">
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 1</p>
-                        <span class="price" id="price">$ 200.0000</span>
-                        <p class="location" id="location">calle 3b</p>
-                    </a>
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 2</p>
-                        <span class="price" id="price">$ 250.0000</span>
-                        <p class="location" id="location">calle 4b</p>
-                    </a>
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 3</p>
-                        <span class="price" id="price">$ 300.0000</span>
-                        <p class="location" id="location">calle 5b</p>
-                    </a>
-                </div>
 
-
-                <div class="line">
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 1</p>
-                        <span class="price" id="price">$ 200.0000</span>
-                        <p class="location" id="location">calle 3b</p>
-                    </a>
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 2</p>
-                        <span class="price" id="price">$ 250.0000</span>
-                        <p class="location" id="location">calle 4b</p>
-                    </a>
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 3</p>
-                        <span class="price" id="price">$ 300.0000</span>
-                        <p class="location" id="location">calle 5b</p>
-                    </a>
-                </div>
-
-
-                <div class="line">
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 1</p>
-                        <span class="price" id="price">$ 200.0000</span>
-                        <p class="location" id="location">calle 3b</p>
-                    </a>
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 2</p>
-                        <span class="price" id="price">$ 250.0000</span>
-                        <p class="location" id="location">calle 4b</p>
-                    </a>
-                    <a href="../templates/visgeneral.html" class="item">
-                        <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-                        <p class="description" id="description">ejemplo 3</p>
-                        <span class="price" id="price">$ 300.0000</span>
-                        <p class="location" id="location">calle 5b</p>
-                    </a>
-                </div>
-                
-
+                <!-- Trabajos cargados dinámicamente -->
             </div>
-        </section>  
-    
+        </section>
+    </div>
+
+    <script>
+        // Obtener trabajos del backend
+        fetch('/api/trabajos')
+            .then(response => response.json())
+            .then(data => {
+            const showBox = document.getElementById('show-box');
+
+        data.forEach(trabajo => {
+            const item = document.createElement('a');
+            item.className = 'item';
+            item.href = `/visgeneral/${trabajo.id_trabajo}`;  // Genera la URL con el id del trabajo
+
+            item.innerHTML = `
+                <img class="product-image" src="${trabajo.fotografia}" alt="${trabajo.titulo}">
+                <p class="description">${trabajo.titulo}</p>
+                <span class="price">$ ${trabajo.monto}</span>
+                <p class="location">${trabajo.ubicacion}</p>
+            `;
+            showBox.querySelector('.line').appendChild(item);
+        });
+    })
+    .catch(error => console.error('Error al cargar trabajos:', error));
+
+
+    </script>
 </body>
 </html>

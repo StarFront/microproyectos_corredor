@@ -4,37 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="../css/usuario.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/usuario.css') }}">
+    <!-- <link rel="stylesheet" href="../css/usuario.css"> -->
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
             <a href="{{ url_for('index') }}" class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+                <!-- <img src="../img/logo.jpg" alt="GreenWork Logo"> -->
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
+                <!-- <img src="../img/logo.jpg" alt="GreenWork Logo"> -->
             </a>
             <nav class="navbar">
                 <ul>
-                    <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <!-- <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
                     <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
                     <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
                     <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
                     <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <button id="logoutButton" class="logout-button">Cerrar sesión</button>
+                    <button id="logoutButton" class="logout-button">Cerrar sesión</button> -->
 
-                    <!-- <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
+                    <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
                     <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
                     <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
                     <li><a href="{{ url_for('postulaciones') }}"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
                     <li><a href="{{ url_for('mis_proyectos') }}"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <li><a href="{{ url_for('muestra_perfil') }}"> <i class="fa-solid fa-briefcase"></i> Muestra perfil</a></li> 
-                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li> -->
+                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li>
                     
                 </ul>
             </nav>
         </header>
+        <main>
+            <!-- <h1>Perfil del Usuario</h1> -->
+            <div class="job-card">
+                {% if perfil %}
+                    <p><strong>Nombre:</strong> {{ perfil[2] }} {{ perfil[3] }}</p>
+                    <p><strong>Cédula:</strong> {{ perfil[4] }}</p>
+                    <p><strong>Teléfono:</strong> {{ perfil[5] }}</p>
+                    <p><strong>Fecha de Nacimiento:</strong> {{ perfil[6] }}</p>
+                    <p><strong>Experiencia:</strong> {{ perfil[7] }}</p><br>
+                    
+                    {% if perfil[7] %}
+                        <img src="{{ url_for('static', filename='img/img_perfil/' + perfil[8]) }}" alt="Foto de perfil" />
+                    {% else %}
+                        <p>No hay foto de perfil.</p>
+                    {% endif %}
+                {% else %}
+                    <p>No se ha encontrado perfil para este usuario.</p>
+                {% endif %}
+                <a href="{{ url_for('formulario_usuario') }}" class="apply-button">Actualizar perfil</a>
+            </div>
+        </main>
 
-        <div class="job-card">
+        <!-- <div class="job-card">
 
             <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
 
@@ -50,12 +74,14 @@
             <h3 class="section-title">Fecha de nacimiento</h3>
             <p class="fecha" id="fecha">20/02/2006</p>
             
-            <a href="../templates/visgeneral.html" class="apply-button">Actualizar perfil</a>
+            <a href="../templates/formulario_usuario.html" class="apply-button">Actualizar perfil</a>
           
 
             
-        </div>
+        </div> -->
     </div>
     
 </body>
 </html>
+
+

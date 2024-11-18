@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de usuario</title>
-    <link rel="stylesheet" href="../css/formulario_usuario.css">
+    <!-- <link rel="stylesheet" href="../css/formulario_usuario.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/formulario_usuario.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container"> 
-   
         <header>
-            <a href="../templates/index.html" class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
-            </a>
+            <a href="{{ url_for('index') }}" class="logo">
+            <!-- <a href="../templates/index.html" class="logo"> -->
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
+                <!-- <img src="../img/logo.jpg" alt="GreenWork Logo">                 -->
+            </a>      
             <div class="text-content">
     
             </div>
@@ -59,6 +61,9 @@
                 <label for="nacimiento">Fecha de nacimiento</label>
                 <input type="date" id="nacimiento" name="nacimiento" required>
 
+                <label for="experiencia">Experiencia Laboral</label>
+                <input type="text" id="experiencia" name="experiencia" required>
+
                 <label for="foto-perfil">Foto de perfil</label>
                 <div class="upload-container">
                     <input type="file" id="foto-perfil" name="foto-perfil" accept="image/*">
@@ -69,6 +74,8 @@
                 </div>
 
                 <button type="submit">Actualizar usuario</button>
+                <!-- <a href="/Front/templates/usuario.html" class="btn">Actualizar usuario</a> -->
+
             </form>
         </div>
     </div>

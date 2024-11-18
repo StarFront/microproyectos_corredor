@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de trabajo</title>
-    <link rel="stylesheet" href="../css/registro.css">
+    <!-- <link rel="stylesheet" href="../css/registro.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -41,7 +42,7 @@
   
     <div class="form-container">
         <h2>REGISTRO DE TRABAJO</h2>
-        <form>
+        <form method="POST" action="{{ url_for('registrar_trabajo') }}" enctype="multipart/form-data">
             
             <label for="titulo">Título *</label>
             <input type="text" id="titulo" name="titulo" required>
@@ -52,18 +53,18 @@
             <label for="duracion">Duración *</label>
             <input type="text" id="duracion" name="duracion" required>
 
-            <label for="ubicacion">Ubicación</label>
-            <input type="text" id="ubicacion" name="ubicacion" placeholder="Ej: Calle 12A">
+            <label for="ubicacion">Ubicación *</label>
+            <input type="text" id="ubicacion" name="ubicacion" placeholder="Ej: Calle 12A" required>
 
             <label for="pago">Pago</label>
             <select id="pago" name="pago">
                 <option value="" disabled selected>Seleccione una opción</option>
-                <option value="hora">Por Hora</option>
-                <option value="tarea">Por Tarea</option>
+                <option value="Por hora">Por Hora</option>
+                <option value="Por tarea">Por Tarea</option>
             </select>
 
-            <label for="monto">Monto</label>
-            <input type="text" id="monto" name="monto">
+            <label for="monto">Monto *</label>
+            <input type="text" id="monto" name="monto" required>
 
             <label for="file-upload">Subir Fotografía</label>
               <div class="upload-container">

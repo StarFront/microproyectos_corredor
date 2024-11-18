@@ -4,69 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista general</title>
-    <link rel="stylesheet" href="../css/visgeneral.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/visgeneral.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container"> 
-   
         <header>
-            <a href="../templates/index.html" class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+            <a href="{{ url_for('dashboard') }}" class="logo">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
             </a>
-            <div class="text-content">
-    
-            </div>
-
             <nav class="navbar">
                 <ul>
-                    <!-- <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
-                    <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
-                    <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
-                    <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
-                    <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <li><a href="#"> <i class="fa-solid fa-key"></i> Cerrar sesion</a></li> -->
-                    
-                    <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
-                    <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
-                    <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
-                    <li><a href="{{ url_for('postulaciones') }}"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
-                    <li><a href="{{ url_for('mis_proyectos') }}"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li>
+                    <li><a href="{{ url_for('dashboard') }}">Inicio</a></li>
+                    <li><a href="{{ url_for('perfil') }}">Perfil</a></li>
+                    <li><a href="{{ url_for('marketplace') }}">Marketplace</a></li>
+                    <li><a href="{{ url_for('postulaciones') }}">Postulaciones</a></li>
+                    <li><a href="{{ url_for('mis_proyectos') }}">Mis proyectos</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="logout-button">Cerrar sesión</a></li>
                 </ul>
             </nav>
-     </div>
         </header>
-
-
-
-   
 
         <!-- Tarjeta de Trabajo -->
         <div class="job-card">
-
-            <img class="product-image" id="product-image" src="" alt="No hay imagen disponible">
-
+            <img class="product-image" id="product-image" src="{{ url_for('static', filename='img/trabajos/' + trabajo['fotografia']) }}" alt="Imagen del trabajo">
             <h3 class="section-title">Trabajo</h3>
-            <p class="trabajo" id="trabajo">Auxuliar de campo</p>
+            <p class="trabajo" id="trabajo">{{ trabajo['titulo'] }}</p>
             
             <h3 class="section-title">Descripción</h3>
-            <p class="description" id="description">Un asistente administrativo de campo es responsable de la operación exitosa de una oficina de campo, proyecto o equipo. Colaboran con los gerentes de campo, el personal, los clientes y los proveedores para brindar apoyo administrativo y facilitar la comunicación.</p>
+            <p class="description" id="description">{{ trabajo['descripcion'] }}</p>
             
             <h3 class="section-title">Duración</h3>
-            <p class="duracion" id="duracion">6 meses</p>
+            <p class="duracion" id="duracion">{{ trabajo['duracion'] }}</p>
             
             <h3 class="section-title">Ubicación</h3>
-            <p class="ubicacion" id="ubicacion">Calle 12a 45-5c</p>
+            <p class="ubicacion" id="ubicacion">{{ trabajo['ubicacion'] }}</p>
             
             <h3 class="section-title">Pago</h3>
-            <p class="pago" id="pago">Por hora</p>
+            <p class="pago" id="pago">{{ trabajo['pago'] }}</p>
             
             <h3 class="section-title">Monto Total</h3>
-            <p class="monto" id="monto">1.500.00</p>
+            <p class="monto" id="monto">{{ trabajo['monto'] }}</p>
             
             <button class="apply-button">Postularme</button>
         </div>
+        
     </div>
 </body>
 </html>

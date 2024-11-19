@@ -66,7 +66,7 @@ def inicializar_bd():
                     id_trabajo INT NOT NULL,
                     estado ENUM('pendiente', 'aceptado', 'rechazado') DEFAULT 'pendiente',
                     FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-                    FOREIGN KEY (id_trabajo) REFERENCES trabajos(id)
+                    FOREIGN KEY (id_trabajo) REFERENCES trabajos(id_trabajo)
                 )
             """)
             print("Base de datos y tablas creadas o verificadas correctamente.")
@@ -76,6 +76,174 @@ def inicializar_bd():
         if conexion.is_connected():
             cursor.close()
             conexion.close()
+
+
+@app.route('/cambiar_estado_activo/<int:id>', methods=['POST'])
+def cambiar_estado_activo(id):
+    if 'correo' in session:
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor()
+
+            # Cambiar el estado a inactivo
+            cursor.execute("UPDATE trabajos SET estado = 'activo' WHERE id_trabajo = %s", (id,))
+
+            # Confirmar cambios
+            conexion.commit()
+            flash('Estado del trabajo cambiado a activo.')
+        except Error as e:
+            print("Error al cambiar el estado del trabajo:", e)
+            flash('Ocurrió un error al cambiar el estado.')
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+        return redirect(url_for('mis_proyectos'))
+    else:
+        flash('Debes iniciar sesión para realizar esta acción.')
+        return redirect(url_for('index'))
+
+
+
+@app.route('/cambiar_estado_trabajo/<int:id>', methods=['POST'])
+def cambiar_estado_trabajo(id):
+    if 'correo' in session:
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor()
+
+            # Cambiar el estado a inactivo
+            cursor.execute("UPDATE trabajos SET estado = 'inactivo' WHERE id_trabajo = %s", (id,))
+
+            # Confirmar cambios
+            conexion.commit()
+            flash('Estado del trabajo cambiado a inactivo.')
+        except Error as e:
+            print("Error al cambiar el estado del trabajo:", e)
+            flash('Ocurrió un error al cambiar el estado.')
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+        return redirect(url_for('mis_proyectos'))
+    else:
+        flash('Debes iniciar sesión para realizar esta acción.')
+        return redirect(url_for('index'))
+
+
+@app.route('/eliminar_trabajo/<int:id>', methods=['POST'])
+def eliminar_trabajo(id):
+    if 'correo' in session:
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor()
+
+            # Eliminar las postulaciones asociadas al trabajo
+            cursor.execute("DELETE FROM postulaciones WHERE id_trabajo = %s", (id,))
+
+            # Eliminar el trabajo
+            cursor.execute("DELETE FROM trabajos WHERE id_trabajo = %s", (id,))
+
+            # Confirmar cambios
+            conexion.commit()
+            flash('Trabajo eliminado correctamente.')
+        except Error as e:
+            print("Error al eliminar el trabajo:", e)
+            flash('Ocurrió un error al eliminar el trabajo.')
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+        return redirect(url_for('mis_proyectos'))
+    else:
+        flash('Debes iniciar sesión para realizar esta acción.')
+        return redirect(url_for('index'))
+
+
+
+@app.route('/mis_proyectos')
+def mis_proyectos():
+    if 'correo' in session:
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor(dictionary=True)
+
+            # Obtener el ID del usuario logueado
+            id_usuario = obtener_usuario_id_por_correo(session['correo'])
+
+            # Consultar los trabajos del usuario
+            cursor.execute("""
+                SELECT id_trabajo, titulo, estado FROM trabajos WHERE id_usuario = %s
+            """, (id_usuario,))
+            trabajos = cursor.fetchall()
+
+            # Renderizar la plantilla y pasar los trabajos
+            return render_template('mis_proyectos.html', trabajos=trabajos)
+
+        except Error as e:
+            print("Error al obtener los trabajos:", e)
+            flash('Ocurrió un error al cargar tus proyectos.')
+            return redirect(url_for('dashboard'))
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+    else:
+        flash('Debes iniciar sesión para ver tus proyectos.')
+        return redirect(url_for('index'))
+
+
+
+@app.route('/vista_postulados/<int:id>')
+def vista_postulados(id):
+    # Conexión a la base de datos
+    conexion = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='greenwork'
+    )
+    cursor = conexion.cursor(dictionary=True)
+    
+    # Obtener el trabajo completo por ID
+    cursor.execute("SELECT * FROM trabajos WHERE id_trabajo = %s", (id,))
+    trabajo = cursor.fetchone()
+    
+    print(trabajo)
+
+    conexion.close()
+    
+    # Verificar si se encontró el trabajo
+    if trabajo:
+        return render_template('vista_postulados.html', trabajo=trabajo)
+    else:
+        return "Trabajo no encontrado", 404
+
+
 
 @app.route('/postular/<int:id_trabajo>', methods=['POST'])
 def postular(id_trabajo):
@@ -139,7 +307,7 @@ def postulaciones():
 
             # Consultar las postulaciones
             cursor.execute("""
-                SELECT p.estado, t.titulo, t.descripcion, t.fotografia, t.id_trabajo
+                SELECT p.estado, t.titulo, t.descripcion, t.fotografia, t.monto, t.ubicacion, t.id_trabajo
                 FROM postulaciones p
                 JOIN trabajos t ON p.id_trabajo = t.id_trabajo
                 WHERE p.id_usuario = %s
@@ -225,7 +393,7 @@ def obtener_trabajos():
         database='greenwork'
     )
     cursor = conexion.cursor(dictionary=True)
-    cursor.execute("SELECT id_trabajo, titulo, descripcion, monto, ubicacion, fotografia FROM trabajos")
+    cursor.execute("SELECT id_trabajo, titulo, descripcion, monto, ubicacion, fotografia FROM trabajos WHERE estado = 'activo'")
     trabajos = cursor.fetchall()
     
     # Agregar rutas completas a las imágenes y enlaces
@@ -293,6 +461,12 @@ def registrar_usuario_en_bd(nombre_usuario, correo, contraseña):
         )
         if conexion.is_connected():
             cursor = conexion.cursor()
+            cursor.execute("SELECT * FROM usuarios WHERE nombre_usuario = %s OR correo = %s", (nombre_usuario, correo))
+            usuario_existente = cursor.fetchone()
+
+            if usuario_existente:
+                print("El nombre de usuario o el correo ya están registrados.")
+                return "Error: El nombre de usuario o el correo ya están registrados."
             consulta = """
             INSERT INTO usuarios (nombre_usuario, correo, contraseña)
             VALUES (%s, %s, %s)
@@ -314,8 +488,12 @@ def registrar_usuario():
     nombre_usuario = request.form['nombre_usuario']
     correo = request.form['correo']
     contraseña = request.form['contraseña']
+
     registrar_usuario_en_bd(nombre_usuario, correo, contraseña)
-    return redirect(url_for('index'))
+
+    return redirect(url_for('index')) 
+
+    #return redirect(url_for('index'))
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -379,12 +557,12 @@ def formulario_usuario():
 #     else:
 #         return redirect(url_for('index'))
 
-@app.route('/mis_proyectos')
-def mis_proyectos():
-    if 'correo' in session:
-        return render_template('mis_proyectos.html')
-    else:
-        return redirect(url_for('index'))
+# @app.route('/mis_proyectos')
+# def mis_proyectos():
+#     if 'correo' in session:
+#         return render_template('mis_proyectos.html')
+#     else:
+#         return redirect(url_for('index'))
     
 def obtener_perfil(usuario_id):
     try:

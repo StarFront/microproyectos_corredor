@@ -4,31 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis proyectos</title>
-    <!-- <link rel="stylesheet" href="../css/mis_proyectos.css"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mis_proyectos.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="container"> 
-   
         <header>
-            <a href="../templates/index.html" class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
             </a>
-            <div class="text-content">
-    
-            </div>
 
             <nav class="navbar">
                 <ul>
-                    <!-- <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
-                    <li><a href="../templates/usuario.html"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
-                    <li><a href="../templates/marketplace.html"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
-                    <li><a href="../templates/postulaciones.html"> <i class="fa-solid fa-earth-americas"></i> Postulaciones</a></li>
-                    <li><a href="../templates/mis_proyectos.html"> <i class="fa-solid fa-briefcase"></i> Mis proyectos</a></li>
-                    <button id="logoutButton" class="logout-button">Cerrar sesión</button> -->
-
                     <li><a href="{{ url_for('dashboard') }}"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
                     <li><a href="{{ url_for('perfil') }}"> <i class="fa-solid fa-address-book"></i> Perfil</a></li>
                     <li><a href="{{ url_for('marketplace') }}"> <i class="fa-solid fa-briefcase"></i> Marketplace</a></li>
@@ -37,52 +24,41 @@
                     <li><a href="{{ url_for('logout') }}" id="logoutButton" class="logout-button">Cerrar sesión</a></li>
                 </ul>
             </nav>
-            </div>
         </header>
 
         <div class="container-table">
             <table>
-              <thead>
-                <tr>
-                  <th class="wide-column">Trabajos</th>
-                  <th class="narrow-column">Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="../templates/vista_postulados.html">Proyecto A</a></td>
-                  <td><a href="../templates/visgeneral.html">Estado</a></td>
-              </tr>
-              
-                <tr>
-                  <td><a href="../templates/visgeneral.html">Proyecto B</a></td>
-                  <td><a href="../templates/visgeneral.html">Estado</a></td>
-                </tr>
-                <tr>
-                    <td><a href="../templates/visgeneral.html">Proyecto C</a></td>
-                    <td><a href="../templates/visgeneral.html">Estado</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="../templates/visgeneral.html">Proyecto D</a></td>
-                    <td><a href="../templates/visgeneral.html">Estado</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="../templates/visgeneral.html">Proyecto E</a></td>
-                    <td><a href="../templates/visgeneral.html">Estado</a></td>
-                  </tr>
-                  <tr>
-                    <td><a href="../templates/visgeneral.html">Proyecto F</a></td>
-                    <td><a href="../templates/visgeneral.html">Estado</a></td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
+                <thead>
+                    <tr>
+                        <th class="wide-column">Trabajos</th>
+                        <th class="narrow-column">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if trabajos %}
+                        {% for trabajo in trabajos %}
+                            <tr>
+                                <!-- Aquí eliminamos el enlace (href vacío) para que no redirija -->
+                                <!-- <td><span class="trabajo-nombre">{{ trabajo.titulo }}</span></td> -->
+                                <td><a href="{{ url_for('vista_postulados', id=trabajo['id_trabajo']) }}" class="trabajo-nombre">{{ trabajo.titulo }}</a></td>
 
-          <div class="boton-container">
+                                <td><span class="trabajo-estado">{{ trabajo.estado }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="2">No tienes proyectos registrados.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="boton-container">
             <a href="{{ url_for('registro') }}">
-            <!-- <a href="../templates/registro.html"></a> -->
                 <button class="boton">Crear Trabajo</button>
             </a>
         </div>        
+    </div>
 </body>
 </html>

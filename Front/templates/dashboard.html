@@ -13,23 +13,11 @@
     <div class="container"> 
    
         <header>
-            <a href="../templates/index.html" class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+            <!-- <a href="../templates/index.html" class="logo"> -->
+                <a href="{{ url_for('dashboard') }}" class="logo">
+                <!-- <img src="../img/logo.jpg" alt="GreenWork Logo"> -->
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
             </a>
-            <div class="text-content">
-                <!-- <div class="user-info">
-                    {% if nombre_usuario %}
-                        <p title="Sesión iniciada con:">
-                            <i class="fa-regular fa-user"></i>
-                            {{ nombre_usuario }}
-                        </p>
-                        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
-                    {% else %}
-                        <p>Inicia sesión</p>
-                    {% endif %}
-                </div> -->
-            </div>
-
             <nav class="navbar">
                 <ul>
                     <!-- <li><a href="../templates/dashboard.html"> <i class="fa-solid fa-tree"></i> Inicio</a></li>
@@ -49,55 +37,47 @@
             </nav>
             </div>
         </header>
-
        
     <div class="dashboard-container">
 
         <div class="boton-container">
-            <a href="../templates/" class="boton">Ir a Página 2</a>
-            <a href="../templates/" class="boton">Ir a Página 2</a>
-            </div>
-        
+            <a href="{{ url_for('marketplace') }}" class="boton">Trabajar</a>
+            <a href="{{ url_for('mis_proyectos') }}" class="boton">Contratar</a>
+        </div>
+    
         <div class="columns">
+            <!-- Columna para Trabajar -->
             <div class="column">
-                
-
-
+                <h2>Últimas Postulaciones Aceptadas</h2>
                 <div class="job-list">
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <!-- <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div> -->
-
-
+                    {% if postulaciones_aceptadas %}
+                        {% for post in postulaciones_aceptadas %}
+                            <div class="job-item">{{ post['titulo'] }}</div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="job-item">No tienes postulaciones aceptadas.</div>
+                    {% endif %}
                 </div>
             </div>
+    
+            <!-- Columna para Contratar -->
             <div class="column">
-                
-
-
+                <h2>Últimos Proyectos Publicados</h2>
                 <div class="job-list">
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <!-- <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div>
-                    <div class="job-item">No hay trabajo en curso</div> -->
-
+                    {% if proyectos_publicados %}
+                        {% for proyecto in proyectos_publicados %}
+                            <div class="job-item">
+                                {{ proyecto['titulo'] }} - {{ proyecto['estado'] }}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="job-item">No has publicado proyectos.</div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
+    
 
 </body>
 </html>

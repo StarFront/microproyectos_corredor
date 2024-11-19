@@ -11,9 +11,11 @@
 
     <div class="container">
         <header>
-            <a href="{{ url_for('dashboard') }}" class="logo">
-                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
-            </a>
+            <!-- <a href="../templates/index.html" class="logo"> -->
+                <a href="{{ url_for('dashboard') }}" class="logo">
+                    <!-- <img src="../img/logo.jpg" alt="GreenWork Logo"> -->
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
+                </a>
             <nav class="navbar">
                 <ul>
                     <li><a href="{{ url_for('dashboard') }}">Inicio</a></li>

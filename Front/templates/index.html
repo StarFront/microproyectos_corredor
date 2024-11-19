@@ -17,7 +17,8 @@
    
         <header>
             <div class="logo">
-                <img src="../img/logo.jpg" alt="GreenWork Logo">
+                <!-- <img src="../img/logo.jpg" alt="GreenWork Logo"> -->
+                <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
             </div>
             <div class="nav-buttons">
                 <button class="btn" id="form-open">Iniciar sesión</button>
@@ -36,7 +37,9 @@
             </div>
 
             <div class="image-container">
-                <img src="../img/pala.jpg" alt="GreenWork Image">
+                <!-- <img src="../img/pala.jpg" alt="GreenWork Image"> -->
+                <img src="{{ url_for('static', filename='img/pala.jpg') }}" alt="GreenWork Image">
+
             </div>
         </section>
 

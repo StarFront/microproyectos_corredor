@@ -8,9 +8,11 @@
 </head>
 <body>
     <header>
-        <a href="{{ url_for('index') }}" class="logo">
-            <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
-        </a>
+            <!-- <a href="../templates/index.html" class="logo"> -->
+                <a href="{{ url_for('dashboard') }}" class="logo">
+                    <!-- <img src="../img/logo.jpg" alt="GreenWork Logo"> -->
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" alt="GreenWork Logo">
+                </a>
 
         <nav class="navbar">
             <ul>
@@ -60,23 +62,37 @@
         <table>
             <thead>
                 <tr>
-                    <th class="wide-column">Postulados</th>
-                    <th class="narrow-column">Estado</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Experiencia</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
+                {% for postulado in postulados %}
                 <tr>
-                    <td>Proyecto A</td>
+                    <td>{{ postulado.nombres }}</td>
+                    <td>{{ postulado.telefono }}</td>
+                    <td>{{ postulado.experiencia }}</td>
+                    <td>{{ postulado.estado }}</td>
                     <td>
-                        <div class="botones"></div>
-                        <button class="botonA">Aceptar</button>
-                        <button class="botonR">Rechazar</button>
+                        <form action="{{ url_for('actualizar_estado_postulacion', id=postulado.id_postulacion, estado='aceptado') }}" method="POST" style="display:inline;">
+                            <button type="submit" class="botonA">Aceptar</button>
+                        </form>
+                        <form action="{{ url_for('actualizar_estado_postulacion', id=postulado.id_postulacion, estado='rechazado') }}" method="POST" style="display:inline;">
+                            <button type="submit" class="botonR">Rechazar</button>
+                        </form>
+                        <form action="{{ url_for('actualizar_estado_postulacion', id=postulado.id_postulacion, estado='pendiente') }}" method="POST" style="display:inline;">
+                            <button type="submit" class="botonP">Pendiente</button>
+                        </form>
                     </td>
                 </tr>
-                <!-- Más filas de postulados pueden ir aquí -->
+                {% endfor %}
             </tbody>
         </table>
     </div>
+    
 
 </body>
 </html>

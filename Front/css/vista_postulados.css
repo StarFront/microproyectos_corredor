@@ -186,6 +186,17 @@ header nav ul li a:hover {
     transition: background-color 0.3s ease;
   }
 
+  .botonP{
+    background-color: #f0ad4e;
+    color: #FFFFFF; /* Color de texto gris */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 1.1em; /* Tamaño de la fuente */
+    border: none; /* Sin bordes */
+    border-radius: 8px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease;
+  }
+
   body {
     padding-bottom: 600px; /* Ajusta el espacio según lo necesites */
 }

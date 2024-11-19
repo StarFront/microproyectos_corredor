@@ -216,6 +216,23 @@ def mis_proyectos():
         flash('Debes iniciar sesión para ver tus proyectos.')
         return redirect(url_for('index'))
 
+@app.route('/actualizar_estado_postulacion/<int:id>/<estado>', methods=['POST'])
+def actualizar_estado_postulacion(id, estado):
+    # Conexión a la base de datos
+    conexion = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='greenwork'
+    )
+    cursor = conexion.cursor()
+
+    # Actualizar el estado de la postulación
+    cursor.execute("UPDATE postulaciones SET estado = %s WHERE id = %s", (estado, id))
+    conexion.commit()
+    conexion.close()
+
+    return redirect(request.referrer)  # Redirige a la misma página
 
 
 @app.route('/vista_postulados/<int:id>')
@@ -228,20 +245,32 @@ def vista_postulados(id):
         database='greenwork'
     )
     cursor = conexion.cursor(dictionary=True)
-    
-    # Obtener el trabajo completo por ID
+
+    # Obtener el trabajo por ID
     cursor.execute("SELECT * FROM trabajos WHERE id_trabajo = %s", (id,))
     trabajo = cursor.fetchone()
-    
-    print(trabajo)
+
+    # Obtener postulados del trabajo con detalles del perfil
+    cursor.execute("""
+        SELECT 
+            p.nombres, 
+            p.telefono, 
+            p.experiencia, 
+            po.estado, 
+            po.id AS id_postulacion
+        FROM postulaciones po
+        JOIN perfil p ON po.id_usuario = p.usuario_id
+        WHERE po.id_trabajo = %s
+    """, (id,))
+    postulados = cursor.fetchall()
 
     conexion.close()
-    
-    # Verificar si se encontró el trabajo
+
     if trabajo:
-        return render_template('vista_postulados.html', trabajo=trabajo)
+        return render_template('vista_postulados.html', trabajo=trabajo, postulados=postulados)
     else:
         return "Trabajo no encontrado", 404
+
 
 
 
@@ -525,9 +554,59 @@ def login():
 @app.route('/dashboard')
 def dashboard():
     if 'correo' in session:
-        return render_template('dashboard.html')
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor(dictionary=True)
+
+            # Obtener el ID del usuario logueado
+            id_usuario = obtener_usuario_id_por_correo(session['correo'])
+
+            # Consultar las últimas postulaciones aceptadas
+            cursor.execute("""
+                SELECT trabajos.titulo
+                FROM postulaciones
+                JOIN trabajos ON postulaciones.id_trabajo = trabajos.id_trabajo
+                WHERE postulaciones.id_usuario = %s AND postulaciones.estado = 'aceptado'
+                ORDER BY postulaciones.id DESC
+                LIMIT 5
+            """, (id_usuario,))
+            postulaciones_aceptadas = cursor.fetchall()
+
+            # Consultar los últimos 5 proyectos publicados por el usuario
+            cursor.execute("""
+                SELECT titulo, estado
+                FROM trabajos
+                WHERE id_usuario = %s
+                ORDER BY id_trabajo DESC
+                LIMIT 5
+            """, (id_usuario,))
+            proyectos_publicados = cursor.fetchall()
+
+            # Renderizar la plantilla del dashboard
+            return render_template(
+                'dashboard.html',
+                postulaciones_aceptadas=postulaciones_aceptadas,
+                proyectos_publicados=proyectos_publicados
+            )
+
+        except Error as e:
+            print("Error al cargar el dashboard:", e)
+            flash('Ocurrió un error al cargar el dashboard.')
+            return redirect(url_for('index'))
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
     else:
+        flash('Debes iniciar sesión para acceder al dashboard.')
         return redirect(url_for('index'))
+
     
 @app.route('/logout')
 def logout():
@@ -595,12 +674,23 @@ def actualizar_perfil(usuario_id, nombres, apellidos, cedula, telefono, fecha_na
         )
         if conexion.is_connected():
             cursor = conexion.cursor()
-            consulta = """
-            UPDATE perfil
-            SET nombres = %s, apellidos = %s, cedula = %s, telefono = %s, fecha_nacimiento = %s, experiencia = %s, foto_perfil = %s
-            WHERE usuario_id = %s
-            """
-            cursor.execute(consulta, (nombres, apellidos, cedula, telefono, fecha_nacimiento, foto_perfil, experiencia, usuario_id))
+
+            # Si la imagen no es nueva, no actualizar foto_perfil
+            if foto_perfil:
+                consulta = """
+                UPDATE perfil
+                SET nombres = %s, apellidos = %s, cedula = %s, telefono = %s, fecha_nacimiento = %s, experiencia = %s, foto_perfil = %s
+                WHERE usuario_id = %s
+                """
+                cursor.execute(consulta, (nombres, apellidos, cedula, telefono, fecha_nacimiento, experiencia, foto_perfil, usuario_id))
+            else:
+                consulta = """
+                UPDATE perfil
+                SET nombres = %s, apellidos = %s, cedula = %s, telefono = %s, fecha_nacimiento = %s, experiencia = %s
+                WHERE usuario_id = %s
+                """
+                cursor.execute(consulta, (nombres, apellidos, cedula, telefono, fecha_nacimiento, experiencia, usuario_id))
+            
             conexion.commit()
             print("Perfil actualizado con éxito.")
     except Error as e:
@@ -609,6 +699,7 @@ def actualizar_perfil(usuario_id, nombres, apellidos, cedula, telefono, fecha_na
         if conexion.is_connected():
             cursor.close()
             conexion.close()
+
 
 def crear_perfil(usuario_id, nombres, apellidos, cedula, telefono, fecha_nacimiento, experiencia, foto_perfil):
     try:

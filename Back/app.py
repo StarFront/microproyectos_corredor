@@ -61,12 +61,12 @@ def inicializar_bd():
             
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS postulaciones (
-                    id_postulacion INT AUTO_INCREMENT PRIMARY KEY,
-                    id_trabajo INT,
-                    id_usuario INT,
-                    estado ENUM('pendiente', 'rechazado', 'contratado') DEFAULT 'pendiente',
-                    FOREIGN KEY (id_trabajo) REFERENCES trabajos(id_trabajo),
-                    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    id_usuario INT NOT NULL,
+                    id_trabajo INT NOT NULL,
+                    estado ENUM('pendiente', 'aceptado', 'rechazado') DEFAULT 'pendiente',
+                    FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+                    FOREIGN KEY (id_trabajo) REFERENCES trabajos(id)
                 )
             """)
             print("Base de datos y tablas creadas o verificadas correctamente.")
@@ -76,6 +76,94 @@ def inicializar_bd():
         if conexion.is_connected():
             cursor.close()
             conexion.close()
+
+@app.route('/postular/<int:id_trabajo>', methods=['POST'])
+def postular(id_trabajo):
+    if 'correo' in session:
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor()
+
+            # Obtener el ID del usuario logueado
+            id_usuario = obtener_usuario_id_por_correo(session['correo'])
+
+            # Verificar si ya está postulado
+            consulta_verificar = "SELECT * FROM postulaciones WHERE id_usuario = %s AND id_trabajo = %s"
+            cursor.execute(consulta_verificar, (id_usuario, id_trabajo))
+            postulacion_existente = cursor.fetchone()
+
+            if postulacion_existente:
+                flash('Ya te has postulado a este trabajo.')
+                return redirect(url_for('visgeneral', id=id_trabajo))
+
+            # Insertar la postulación en la base de datos
+            consulta = "INSERT INTO postulaciones (id_usuario, id_trabajo, estado) VALUES (%s, %s, 'pendiente')"
+            cursor.execute(consulta, (id_usuario, id_trabajo))
+            conexion.commit()
+
+            flash('Te has postulado exitosamente.')
+            return redirect(url_for('postulaciones'))
+        except Error as e:
+            print("Error al postularse:", e)
+            flash('Ocurrió un error al postularte.')
+            return redirect(url_for('visgeneral', id=id_trabajo))
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+    else:
+        flash('Debes iniciar sesión para postularte.')
+        return redirect(url_for('index'))
+
+@app.route('/postulaciones')
+def postulaciones():
+    if 'correo' in session:
+        try:
+            # Conexión a la base de datos
+            conexion = mysql.connector.connect(
+                host='localhost',
+                user='root',
+                password='',
+                database='greenwork'
+            )
+            cursor = conexion.cursor(dictionary=True)
+
+            # Obtener el ID del usuario logueado
+            id_usuario = obtener_usuario_id_por_correo(session['correo'])
+
+            # Consultar las postulaciones
+            cursor.execute("""
+                SELECT p.estado, t.titulo, t.descripcion, t.fotografia, t.id_trabajo
+                FROM postulaciones p
+                JOIN trabajos t ON p.id_trabajo = t.id_trabajo
+                WHERE p.id_usuario = %s
+            """, (id_usuario,))
+            postulaciones = cursor.fetchall()
+
+            # Organizar las postulaciones en columnas
+            pendientes = [p for p in postulaciones if p['estado'] == 'pendiente']
+            aceptados = [p for p in postulaciones if p['estado'] == 'aceptado']
+            rechazados = [p for p in postulaciones if p['estado'] == 'rechazado']
+
+            return render_template('postulaciones.html', pendientes=pendientes, aceptados=aceptados, rechazados=rechazados)
+        except Error as e:
+            print("Error al obtener postulaciones:", e)
+            flash('Ocurrió un error al cargar tus postulaciones.')
+            return redirect(url_for('dashboard'))
+        finally:
+            if conexion.is_connected():
+                cursor.close()
+                conexion.close()
+    else:
+        flash('Debes iniciar sesión para ver tus postulaciones.')
+        return redirect(url_for('index'))
+
 
 @app.route('/registrar_trabajo', methods=['POST'])
 def registrar_trabajo():
@@ -284,12 +372,12 @@ def formulario_usuario():
     else:
         return redirect(url_for('index'))
 
-@app.route('/postulaciones')
-def postulaciones():
-    if 'correo' in session:
-        return render_template('postulaciones.html')
-    else:
-        return redirect(url_for('index'))
+# @app.route('/postulaciones')
+# def postulaciones():
+#     if 'correo' in session:
+#         return render_template('postulaciones.html')
+#     else:
+#         return redirect(url_for('index'))
 
 @app.route('/mis_proyectos')
 def mis_proyectos():

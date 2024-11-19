@@ -1,3 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postulaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/postulaciones.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Mis Postulaciones</h1>
+    </header>
+    <div class="columns">
+        <div class="column">
+            <h2>Pendientes</h2>
+            {% for p in pendientes %}
+            <div class="job-card">
+                <img src="{{ url_for('static', filename='img/trabajos/' + p['fotografia']) }}" alt="Trabajo">
+                <h3>{{ p['titulo'] }}</h3>
+                <p>{{ p['descripcion'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h2>Aceptados</h2>
+            {% for p in aceptados %}
+            <div class="job-card">
+                <img src="{{ url_for('static', filename='img/trabajos/' + p['fotografia']) }}" alt="Trabajo">
+                <h3>{{ p['titulo'] }}</h3>
+                <p>{{ p['descripcion'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="column">
+            <h2>Rechazados</h2>
+            {% for p in rechazados %}
+            <div class="job-card">
+                <img src="{{ url_for('static', filename='img/trabajos/' + p['fotografia']) }}" alt="Trabajo">
+                <h3>{{ p['titulo'] }}</h3>
+                <p>{{ p['descripcion'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
 
 
 

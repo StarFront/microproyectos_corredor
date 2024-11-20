@@ -122,15 +122,14 @@ header nav ul li a:hover {
 .form-container label {
     display: block;
     margin: 10px 0 5px;
-    color: #ffffff;
+    color: #FFFFFF;
     font-weight: bold;
     font-size: 14px;
 }
 
 .form-container input[type="text"],
 .form-container textarea,
-.form-container select,
-.form-container input[type="file"] {
+.form-container select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -138,27 +137,8 @@ header nav ul li a:hover {
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 14px;
-    background-color: #f9f9f9;
-    cursor: pointer;
-}
-.file-input {
-    display: inline-block;
-    padding: 10px;
-    font-size: 14px;
-    background-color: #f9f9f9; /* Fondo consistente */
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s; /* Efecto suave */
 }
 
-
-.file-input:hover {
-    background-color: #eef9ee;
-    border-color: #66cc66;
-}
 .form-container textarea {
     resize: vertical;
     font-family: Arial, sans-serif;
@@ -200,7 +180,6 @@ button[type="submit"]:hover {
     background-color: #f9f9f9;
     cursor: pointer;
     transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    
 }
 
 .upload-container:hover {

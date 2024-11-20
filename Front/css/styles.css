@@ -16,6 +16,7 @@ body {
     
 }
 
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -211,17 +212,8 @@ button:hover {
     padding-right: 40px;
     color: #333;
     transition: all 0.2s ease;
-    border-bottom: 1.5px solid #aaaaaa;   
-     
-}  
-
-.input_box input::placeholder {
-    position: relative;
-    top: -3px; /* Mueve hacia arriba */
-    font-size: 14px; /* Ajusta el tamaño si es necesario */
-    color: #888; /* Cambia el color del texto del placeholder */
+    border-bottom: 1.5px solid #aaaaaa;    
 }
-
 
 .input_box input:focus {
     border-color: #006400;
@@ -233,19 +225,18 @@ button:hover {
     transform: translateY(-50%);
     font-size: 20px;
     color: #333;
+    
 }
 
 .input_box i.email,
 .input_box i.password {
     left: 10px;
-    margin-top: 5px;
-    
+    margin-top: 10px;
 }
 
 .input_box input:focus ~ i.email,
 .input_box input:focus ~ i.password {
     color: #006400;
-    
 }
 
 

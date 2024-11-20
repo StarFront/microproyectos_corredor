@@ -1,10 +1,11 @@
+@media (max-width: 480px) {
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -90,13 +91,15 @@ header nav ul li a:hover {
 
 .form-container {
     background-color: #006400;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 20px;
     max-width: 500px;
     width: 100%;
     margin: 0 auto;
     margin-top: 30px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background-color: #006400;
 }
 
 .form-container h2 {
@@ -109,9 +112,9 @@ header nav ul li a:hover {
 .form-container label {
     color: #ffffff;
     display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: 10px 0 5px;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .form-container input[type="text"],

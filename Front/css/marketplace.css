@@ -1,4 +1,4 @@
-@media (max-width: 480px) {
+
     * {
         margin: 0;
         padding: 0;
@@ -10,7 +10,7 @@
         max-width: 100%;  /* Se adapta al tamaño de la pantalla */
         padding: 20px;  /* Menos espacio para pantallas pequeñas */
     }
-}
+
 
 .container {
     max-width: 1200px;

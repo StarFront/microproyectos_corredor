@@ -380,7 +380,20 @@ def registrar_trabajo():
         if foto_trabajo:
             # Generar un nombre único basado en el usuario y trabajo
             foto_filename = f"trabajo_{usuario_id}_{titulo.replace(' ', '_')}.jpg"
-            foto_trabajo.save(f'Front/img/trabajos/{foto_filename}')
+            #foto_trabajo.save(f'Front/img/trabajos/{foto_filename}')
+            ruta_base = os.path.dirname(os.path.abspath(__file__))
+
+            # Ruta al directorio 'trabajos'
+            ruta_directorio = os.path.join(ruta_base, '../Front/img/trabajos')
+
+            # Crear el directorio si no existe
+            if not os.path.exists(ruta_directorio):
+                os.makedirs(ruta_directorio)
+
+            # Ruta completa del archivo
+            foto_trabajo_path = os.path.join(ruta_directorio, foto_filename)
+            foto_trabajo.save(foto_trabajo_path)
+
         else:
             foto_filename = "sin_imagen.png"
         try:
@@ -724,7 +737,7 @@ def crear_perfil(usuario_id, nombres, apellidos, cedula, telefono, fecha_nacimie
         if conexion.is_connected():
             cursor.close()
             conexion.close()
-
+import os
 
 @app.route('/actualizar_perfil', methods=['POST'])
 def actualizar_perfil_view():
@@ -745,7 +758,19 @@ def actualizar_perfil_view():
         
         if foto_perfil:
             foto_perfil_filename = f"foto_{usuario_id}.jpg"
-            foto_perfil.save(f'Front/img/img_perfil/{foto_perfil_filename}')
+            # foto_perfil.save(f'Front/img/img_perfil/{foto_perfil_filename}')
+            # foto_perfil = foto_perfil_filename
+            # Ruta absoluta al directorio 'img_perfil'
+            ruta_base = os.path.dirname(os.path.abspath(__file__))
+            ruta_directorio = os.path.join(ruta_base, '../Front/img/img_perfil')
+
+            # Crear el directorio si no existe
+            if not os.path.exists(ruta_directorio):
+                os.makedirs(ruta_directorio)
+
+            # Guardar la imagen en la ruta calculada
+            foto_perfil_path = os.path.join(ruta_directorio, foto_perfil_filename)
+            foto_perfil.save(foto_perfil_path)
             foto_perfil = foto_perfil_filename
         else:
             foto_perfil = None

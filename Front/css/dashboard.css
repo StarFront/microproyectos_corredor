@@ -117,12 +117,21 @@ h1 {
 .columns {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    align-items: flex-start; /* Mantiene el contenido alineado al inicio */
+    gap: 20px; /* Espaciado entre columnas */
 }
 
 .column {
-    width: 48%; /* Ancho de cada columna para que estén lado a lado */
+    flex: 1; /* Ambas columnas tendrán el mismo ancho */
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos dentro estén en columna */
+    min-height: 200px; /* Ajusta la altura mínima de las columnas */
+    background-color: #f9f9f9; /* Fondo para distinguir el espacio */
+    padding: 10px;
+    border-radius: 8px;
 }
+
+
 
 .job-list {
     display: flex;
@@ -141,24 +150,24 @@ h1 {
     font-size: 18px;
 }
 
+.boton-container {
+    display: flex;
+    justify-content: space-around; /* Espaciado igual entre los botones */
+    margin-bottom: 20px; /* Incrementa el espacio entre los botones y el contenido */
+}
+
 .boton {
-    padding:20px 40px;
-    background-color: #006400;
+    background-color: #006400; /* Verde oscuro, por ejemplo */
     color: white;
     text-decoration: none;
+    padding: 15px 30px;
     border-radius: 5px;
-    transition: background-color 0.3s;
-    margin: 0 80px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .boton:hover {
-    background-color: #8B4513;
-}
-
-/* Estilos para el contenedor del botón */
-.boton-container {
-    margin: 20px 0;
-    text-align: center; /* Centra el botón */
+    background-color: #228B22; /* Cambio de color en hover */
 }
 
 

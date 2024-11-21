@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenWork</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="icon" href="../img/favicon.png" type="Image/png">
+    <!-- <link rel="icon" href="../img/favicon.png" type="Image/png"> -->
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
 
 </head>
 <body>
@@ -34,7 +35,7 @@
                 <h2>BIENVENIDOS</h2>
                 <p>
                     Tu puente hacia nuevas oportunidades laborales en el Corredor Ecológico de Villavicencio. Conecta con proyectos temporales, trabaja de forma segura y contribuye al desarrollo de nuestra comunidad.
-                    hoy y transforma tu futuro. 
+                    Empieza hoy y transforma tu futuro. 
                     <br>¡Regístrate ahora!
                    
                 </p>
@@ -123,8 +124,8 @@
 
 </section>
 
-<script src="../js/script.js"></script>
-<!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+<!-- <script src="../js/script.js"></script> -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 </html>

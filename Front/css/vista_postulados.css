@@ -101,6 +101,7 @@ header nav ul li a:hover {
 /* Estilo del contenedor .job-card */
 .job-card {
     width: 50%; /* Ocupa casi la mitad del espacio */
+    max-width: 600px;
     margin-left: 30px;
     background-color: #f9f9f9; /* Fondo claro */
     padding: 20px; /* Espaciado interno */
@@ -208,4 +209,10 @@ header nav ul li a:hover {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.product-image {
+    max-width: 100%;   /* Asegura que la imagen no sobrepase el 100% del ancho del contenedor */
+    height: auto;      /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Recorta la imagen si es necesario para que encaje bien dentro del contenedor */
+    border-radius: 8px; /* Opcional: Si quieres bordes redondeados */
 }
